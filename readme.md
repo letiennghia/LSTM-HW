@@ -1,4 +1,4 @@
-# Executed notebooks and runnable source
+# LSTM Comparision against Vanilla RNN and other SML methods
 
 Both notebooks retain their executed full-experiment outputs:
 - imdb_sentiment.ipynb: original Logistic Regression, SVM, RNN and LSTM benchmark.
