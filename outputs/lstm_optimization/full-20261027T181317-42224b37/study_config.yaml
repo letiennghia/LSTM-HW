@@ -1,0 +1,111 @@
+seed: 42
+reference_run: outputs/full-20261027T170840-4f2309dd
+output_dir: outputs/lstm_optimization
+device: auto
+data:
+  dataset_name: stanfordnlp/imdb
+  validation_fraction: 0.2
+  lowercase: true
+  max_vocab_size: 30000
+  max_seq_len: 400
+  truncation: head
+  batch_size: 64
+  num_workers: 0
+neural:
+  embedding_dim: 128
+  hidden_dim: 128
+  num_layers: 1
+  bidirectional: true
+  pooling: mean_max
+  embedding_dropout: 0.2
+  classifier_dropout: 0.4
+  word_dropout: 0.0
+  optimizer: adam
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  epochs: 15
+  early_stopping_patience: 4
+  early_stopping_min_delta: 0.0001
+  selection_metric: val_loss
+  scheduler: none
+  scheduler_gamma: 0.95
+experiments:
+- id: 01_original_control
+  description: Fresh unchanged original LSTM and training protocol
+  control: true
+  overrides: {}
+- id: 02_anchor
+  description: Suggested starting configuration
+  overrides: {}
+- id: 03_vocab_20000
+  description: Vocabulary 20000
+  overrides:
+    data:
+      max_vocab_size: 20000
+- id: 04_length_300
+  description: Sequence length 300
+  overrides:
+    data:
+      max_seq_len: 300
+- id: 05_length_500
+  description: Sequence length 500
+  overrides:
+    data:
+      max_seq_len: 500
+- id: 06_head_tail
+  description: Head-tail truncation
+  overrides:
+    data:
+      truncation: head_tail
+- id: 07_unidirectional
+  description: Unidirectional recurrence
+  overrides:
+    neural:
+      bidirectional: false
+- id: 08_final_pooling
+  description: Final-state pooling
+  overrides:
+    neural:
+      pooling: final
+- id: 09_max_pooling
+  description: Masked max pooling
+  overrides:
+    neural:
+      pooling: max
+- id: 10_no_embedding_dropout
+  description: Embedding dropout disabled
+  overrides:
+    neural:
+      embedding_dropout: 0.0
+- id: 11_classifier_dropout_03
+  description: Classifier dropout 0.3
+  overrides:
+    neural:
+      classifier_dropout: 0.3
+- id: 12_word_dropout
+  description: Word dropout 0.1
+  overrides:
+    neural:
+      word_dropout: 0.1
+- id: 13_no_weight_decay
+  description: Weight decay disabled
+  overrides:
+    neural:
+      weight_decay: 0.0
+- id: 14_exponential_scheduler
+  description: Exponential LR decay gamma 0.95
+  overrides:
+    neural:
+      scheduler: exponential
+- id: 15_learning_rate_001
+  description: Learning rate 0.001
+  overrides:
+    neural:
+      learning_rate: 0.001
+- id: 16_short_budget
+  description: Maximum 8 epochs and patience 2
+  overrides:
+    neural:
+      epochs: 8
+      early_stopping_patience: 2

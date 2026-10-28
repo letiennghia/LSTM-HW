@@ -1,0 +1,9 @@
+{
+  "preserved_original_files": 178,
+  "changed_files": [],
+  "all_candidates_complete": true,
+  "test_predictions": 25000,
+  "selection_before_test": true,
+  "selected_experiment": "12_word_dropout",
+  "selection_sha256": "7bb82a294a703f4e4d306323b70b689d338226f6006662bd8d5dcd3e2b709a63"
+}

@@ -1,0 +1,35 @@
+{
+  "run_id": "full-20261027T170840-4f2309dd",
+  "mode": "full",
+  "seed": 42,
+  "dataset": "stanfordnlp/imdb",
+  "split_sizes": {
+    "train": 20000,
+    "val": 5000,
+    "test": 25000
+  },
+  "config_signature": "5ee009648e33c9334009f2b2ec0e4125be31de3c69cfdcec83f0210ec8802df5",
+  "manifest_hash": "0c55c88ab4eb5f51980014cea4dffee16f796520822d29e2c54fd5c4faa17d97",
+  "fingerprints": {
+    "train": "b22c1504b46f1653",
+    "test": "41977005d781de1c"
+  },
+  "created_at": "2026-10-27T17:08:40.478921+00:00",
+  "environment": {
+    "python": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "versions": {
+      "torch": "2.11.0+cu128",
+      "datasets": "5.1.0",
+      "scikit-learn": "1.9.1",
+      "numpy": "2.4.6",
+      "pandas": "3.1.0",
+      "matplotlib": "3.11.2",
+      "PyYAML": "6.0.3",
+      "joblib": "1.6.0"
+    },
+    "determinism_note": "Seeds and deterministic cuDNN settings reduce variation; GPU results are not guaranteed bitwise identical across hardware or versions."
+  }
+}

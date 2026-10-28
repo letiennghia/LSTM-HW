@@ -1,0 +1,62 @@
+{
+  "experiment_id": "12_word_dropout",
+  "validation": {
+    "experiment_id": "12_word_dropout",
+    "status": "complete",
+    "description": "Word dropout 0.1",
+    "val_accuracy": 0.8862,
+    "val_f1": 0.8890189194460698,
+    "val_loss": 0.282515154671669,
+    "training_seconds": 324.81518259999575,
+    "best_epoch": 15,
+    "epochs_trained": 15,
+    "parameter_count": 4104705,
+    "config_hash": "3ac3cf73bedb6b77c1a1e3c4d3bb0dfe63d4b44218456cdae363972a636a9f9b",
+    "checkpoint_sha256": "a2202774fcaebdaef68819a23a44c622418b5e76b97641c3a9b327888bb803df"
+  },
+  "config": {
+    "seed": 42,
+    "output_dir": "outputs/lstm_optimization",
+    "device": "auto",
+    "data": {
+      "dataset_name": "stanfordnlp/imdb",
+      "validation_fraction": 0.2,
+      "lowercase": true,
+      "max_vocab_size": 30000,
+      "max_seq_len": 400,
+      "truncation": "head",
+      "batch_size": 64,
+      "num_workers": 0
+    },
+    "neural": {
+      "embedding_dim": 128,
+      "hidden_dim": 128,
+      "num_layers": 1,
+      "bidirectional": true,
+      "pooling": "mean_max",
+      "embedding_dropout": 0.2,
+      "classifier_dropout": 0.4,
+      "word_dropout": 0.1,
+      "optimizer": "adam",
+      "learning_rate": 0.0005,
+      "weight_decay": 0.0001,
+      "grad_clip": 1.0,
+      "epochs": 15,
+      "early_stopping_patience": 4,
+      "early_stopping_min_delta": 0.0001,
+      "selection_metric": "val_loss",
+      "scheduler": "none",
+      "scheduler_gamma": 0.95
+    }
+  },
+  "checkpoint_sha256": "a2202774fcaebdaef68819a23a44c622418b5e76b97641c3a9b327888bb803df",
+  "config_hash": "3ac3cf73bedb6b77c1a1e3c4d3bb0dfe63d4b44218456cdae363972a636a9f9b",
+  "vocab_file": "vocabulary_30000.json",
+  "vocab_sha256": "79e899ad1a37cbbed9762610cf372e2a7562d6995c6dc60e958abc13b725c9de",
+  "control": false,
+  "split_hash": "acdf408c20409b50b56802f3ef72206db9933826d4c22773695ab502d49c4a4f",
+  "study_config_hash": "e27a8fef6b630e206f6ebcc493a98be79c3f580722cd55c6204d18f5c46253f0",
+  "mode": "full",
+  "ranking_rule": "validation accuracy descending, F1 descending, loss ascending, experiment ID ascending",
+  "frozen_at": "2026-10-27T19:25:20.746222+00:00"
+}
